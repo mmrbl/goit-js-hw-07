@@ -20,8 +20,6 @@ const createGallery = galleryItems
   })
   .join('');
 
-console.log(createGallery);
-
 //додає виществорену розмітку у HTML
 galleryContainer.insertAdjacentHTML('beforeend', createGallery);
 
@@ -41,6 +39,14 @@ function onImageClick(evt) {
 `);
 
   showLargeImage.show();
+
+  //закриває модалку по натисненню Esc
+
+  document.addEventListener('keydown', evt => {
+    if (evt.code === 'Escape') {
+      showLargeImage.close();
+    }
+  });
 }
 
 galleryContainer.addEventListener('click', onImageClick);
